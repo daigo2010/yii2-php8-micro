@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build: docker/web/
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/app:delegated
+    depends_on:
+      - php
+  php:
+    image:  php:8.0.1-fpm-alpine
+    volumes:
+      - ./:/app:delegated
